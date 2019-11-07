@@ -6,24 +6,29 @@ sheet = book.sheet_by_index(0)
 
 firstRow = sheet.row_values(0)
 
-for columnId in range(len(firstRow)):
-    print(f"{firstRow[columnId]} - {columnId}")
-
-dict_list = []
+filteredList = []
 
 for rowIndex in range(1, sheet.nrows):
-    dict_object = {}
-    # for colIndex in range(len(firstRow)):
-    #     dict_object[firstRow[colIndex]] = sheet.cell(rowIndex, colIndex).value
-    dict_object[firstRow[0]] = sheet.cell(rowIndex, 0).value
-    dict_object[firstRow[0]] = sheet.cell(rowIndex, 0).value
-    dict_object[firstRow[0]] = sheet.cell(rowIndex, 0).value
-    dict_object[firstRow[0]] = sheet.cell(rowIndex, 0).value
+    currentObject = {}
+    
+    currentObject[firstRow[1]] = sheet.cell(rowIndex, 1).value
+    currentObject[firstRow[2]] = sheet.cell(rowIndex, 2).value
+    currentObject[firstRow[3]] = sheet.cell(rowIndex, 3).value
+    currentObject[firstRow[4]] = sheet.cell(rowIndex, 4).value
+    currentObject[firstRow[5]] = sheet.cell(rowIndex, 5).value
+    currentObject[firstRow[6]] = sheet.cell(rowIndex, 6).value
+    currentObject[firstRow[7]] = sheet.cell(rowIndex, 7).value
+    currentObject[firstRow[13]] = sheet.cell(rowIndex, 13).value
+    currentObject[firstRow[14]] = sheet.cell(rowIndex, 14).value
+    currentObject[firstRow[15]] = sheet.cell(rowIndex, 15).value
+    currentObject["vendor"] = ""
+    currentObject["lastOrdered"] = ""
+    currentObject["outOfStock"] = ""
+    currentObject["orderQuantity"] = ""
 
-    dict_list.append(dict_object)
+    filteredList.append(currentObject)
 
 
-# print(dict_list)
 
 with open('product.json', 'w') as jsonFile:
-    json.dump(dict_list, jsonFile)
+    json.dump(filteredList, jsonFile)
